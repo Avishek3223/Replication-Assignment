@@ -17,7 +17,7 @@ const Main = () => {
     borderRadius: '16px',
     transition: 'background-color 0.5s ease, box-shadow 0.8s ease, color 0.3s ease',
     cursor: 'pointer',
-    ...(window.innerWidth <= 1600 && { padding: '0.8rem 1.9rem' }), // Adjust padding for max-width 1600px
+    ...(window.innerWidth <= 1600 && { padding: '0.8rem 1.8rem' }), // Adjust padding for max-width 1600px
   });
 
   const content = {
