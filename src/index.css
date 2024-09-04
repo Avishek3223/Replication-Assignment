@@ -5,3 +5,22 @@
 .poppins {
   font-family: "Poppins", sans-serif;
 }
+
+.Plus{
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Targeting the scrollbar within the specific content container */
+.scrollbar-container::-webkit-scrollbar {
+  width: 9px;
+}
+
+.scrollbar-container::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: linear-gradient(180deg, #888989, #4A4E54) !important;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-track{
+  background: #363C43 !important;
+}
