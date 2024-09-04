@@ -9,13 +9,19 @@ import './gallery.css';
 function Gallery() {
   const [images, setImages] = useState([initialImage, initialImage, initialImage]); // Initialize with three images
   const scrollRef = useRef(null);
+  const newImageIndexRef = useRef(null);
 
   const handleAddImage = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setImages([...images, e.target.result]); // Add new image to the array
+        const newImage = e.target.result;
+        setImages((prevImages) => {
+          const updatedImages = [...prevImages, newImage];
+          newImageIndexRef.current = updatedImages.length - 1; // Save index of new image
+          return updatedImages;
+        });
       };
       reader.readAsDataURL(file);
     }
@@ -44,6 +50,19 @@ function Gallery() {
     }
   };
 
+  // Automatically scroll to the newly added image
+  React.useEffect(() => {
+    if (newImageIndexRef.current !== null && scrollRef.current) {
+      const newIndex = newImageIndexRef.current;
+      const imageWidth = scrollRef.current.firstChild.clientWidth + 16; // Adjust based on image and spacing
+      scrollRef.current.scrollTo({
+        left: newIndex * imageWidth,
+        behavior: 'smooth',
+      });
+      newImageIndexRef.current = null; // Reset the reference
+    }
+  }, [images]);
+
   return (
     <div>
       <div
@@ -51,8 +70,8 @@ function Gallery() {
         style={{ boxShadow: '5.67px 5.67px 3.78px 0px #00000066' }}
       >
         <div className="flex flex-col justify-around h-full">
-          <img className="absolute top-6 left-3" src={question} alt="Icon" />
-          <img className="absolute top-1/2" src={menu} alt="" />
+          <img className="absolute top-6 left-3" src={question} alt="Question Icon" />
+          <img className="absolute top-1/2" src={menu} alt="Menu Icon" />
           <div className="flex flex-col justify-between items-center">
             <div className="flex justify-between w-[85%]">
               <button
@@ -107,7 +126,7 @@ function Gallery() {
                   }}
                   onClick={() => handleScroll('left')}
                 >
-                  <img src={left} alt="Previous" />
+                  <img src={left} alt="Scroll Left" />
                 </button>
                 <button
                   className="text-white p-4 rounded-full"
@@ -119,7 +138,7 @@ function Gallery() {
                   }}
                   onClick={() => handleScroll('right')}
                 >
-                  <img src={right} alt="Next" />
+                  <img src={right} alt="Scroll Right" />
                 </button>
               </div>
             </div>
@@ -129,11 +148,12 @@ function Gallery() {
             className="flex space-x-5 overflow-x-scroll no-scrollbar w-[84%] mx-auto"
           >
             {images.map((image, index) => (
+              // eslint-disable-next-line
               <img
                 key={index}
                 className="rounded-[10px] w-[11rem] h-[11rem] flex-shrink-0 max1600:w-[9rem] max1600:h-[9rem]"
                 src={image}
-                alt={`Image ${index + 1}`}
+                alt={`Gallery Image ${index + 1}`}
                 style={{ filter: 'grayscale(100%)' }}
               />
             ))}

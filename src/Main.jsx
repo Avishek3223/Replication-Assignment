@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import question from './utils/question.svg';
 import menu from './utils/menu-box.svg';
-import image1 from './utils/image1.jpg'
 import Gallery from './components/gallery';
 
 const Main = () => {
@@ -54,7 +53,15 @@ const Main = () => {
   return (
     <div className="poppins w-full h-screen bg-custom-gradient flex items-center justify-center">
       <div className="flex w-full justify-evenly items-center flex-wrap">
-        <div className="w-[50%] h-[80vh] border border-white max1600:h-[85vh]"></div>
+        <div className="w-[50%] h-[80vh] max1600:h-[85vh] max1200:hidden p-4 bg-[#424c52] text-[1.2rem] text-[#cfcfcf] rounded-lg">
+          <p className="text-lg font-semibold mb-2">Hi, I’m Avishek.</p>
+          <p className="mb-4">I’ve successfully replicated the Figma design as requested. However, I encountered a couple of uncertainties during the implementation:</p>
+          <ul className="list-disc list-inside pl-4 mb-4">
+            <li><strong>Image Color:</strong> The design didn’t specify the color for the images, so I chose to display them in black and white to maintain consistency.</li>
+            <li><strong>Scrollbar Implementation:</strong> I was unsure whether a scrollbar was intended for the first section based on the design. To ensure functionality, I went ahead and added it.</li>
+          </ul>
+          <p>If you have any preferences or require further adjustments, please let me know!</p>
+        </div>
         <div className="flex flex-col h-[80vh] justify-between max1600:h-[85vh]">
           <div className="relative max-w-[720px] rounded-[19px] p-3 h-[316px] bg-[#363C43] max1600:w-[600px] max1600:h-[290px]"
             style={{ boxShadow: '5.67px 5.67px 3.78px 0px #00000066' }}
