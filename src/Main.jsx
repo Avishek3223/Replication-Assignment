@@ -63,7 +63,7 @@ const Main = () => {
           <p>If you have any preferences or require further adjustments, please let me know!</p>
         </div>
         <div className="flex flex-col h-[80vh] justify-between max1600:h-[85vh]">
-          <div className="relative max-w-[720px] rounded-[19px] p-3 h-[316px] bg-[#363C43] max1600:w-[600px] max1600:h-[290px]"
+          <div className="relative max-w-[720px] rounded-[19px] p-3 h-[316px] bg-[#363C43] max1600:w-[600px] max1600:h-[37vh]"
             style={{ boxShadow: '5.67px 5.67px 3.78px 0px #00000066' }}
           >
             <img className="absolute top-5 left-3" src={question} alt="" />
